@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:superheroapk/constants/app_constants.dart';
+import 'package:superhero_search/constants/app_constants.dart';
 import '../models/hero.dart' as HeroModel;
 import '../services/hero_service.dart';
 import '../widgets/hero_list_tile_img.dart';

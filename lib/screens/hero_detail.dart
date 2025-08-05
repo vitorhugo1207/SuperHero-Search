@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:superheroapk/constants/app_constants.dart';
+import 'package:superhero_search/constants/app_constants.dart';
 import '../models/hero.dart' as HeroModel;
 
 class HeroDetailPage extends StatelessWidget {
