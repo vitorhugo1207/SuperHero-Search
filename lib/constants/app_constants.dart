@@ -8,4 +8,5 @@ abstract class AppConstants {
   static const EdgeInsets paddingInitial = EdgeInsets.all(16.0);
   static const SizedBox spaceMedium = SizedBox(height: 20);
   static const SizedBox spaceSmall = SizedBox(height: 10);
+  static const String database = 'superhero_database.db';
 }

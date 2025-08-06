@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superhero_search/constants/app_constants.dart';
+import 'package:superhero_search/sqllite/save_favorite.dart';
 import '../models/hero.dart' as HeroModel;
 
 class HeroDetailPage extends StatelessWidget {
@@ -11,7 +12,15 @@ class HeroDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(hero.name)
+        title: Text(hero.name),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.favorite_border),
+            onPressed: () {
+              saveFavoriteHero(hero);
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: AppConstants.paddingInitial,

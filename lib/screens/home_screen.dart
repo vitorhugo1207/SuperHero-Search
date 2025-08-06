@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:superhero_search/constants/app_constants.dart';
+import 'package:superhero_search/screens/hero_fav.dart';
 import '../models/hero.dart' as HeroModel;
 import '../services/hero_service.dart';
 import '../widgets/hero_list_tile_img.dart';
@@ -48,34 +49,54 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('SuperHero Search')),
-      body: Padding(
-        padding: AppConstants.paddingInitial,
-        child: Column(
-          children: <Widget>[
-            TextField(
-              onChanged: _search,
-              decoration: const InputDecoration(
-                hintText: 'Search for your hero',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            AppConstants.spaceMedium,
-            _isLoading
-              ? const CircularProgressIndicator()
-              : Expanded(
-                child: _heroes.isEmpty
-                  ? const Center(child: Text('No heroes found.'))
-                  : ListView.builder(
-                      itemCount: _heroes.length,
-                      itemBuilder: (context, index) {
-                        return HeroListTile(hero: _heroes[index]);
-                      },
-                    ),
-              ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('SuperHero'),
+          bottom: const TabBar(
+            tabs: [
+              Tab(text: 'Heroes'),
+              Tab(text: 'Favorites'),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            _heroSearch(),
+            HeroFav(),
           ],
         ),
+      ),
+    );
+  }
+
+  Padding _heroSearch() {
+    return Padding(
+      padding: AppConstants.paddingInitial,
+      child: Column(
+        children: <Widget>[
+          TextField(
+            onChanged: _search,
+            decoration: const InputDecoration(
+              hintText: 'Search for your hero',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          AppConstants.spaceMedium,
+          _isLoading
+              ? const CircularProgressIndicator()
+              : Expanded(
+                  child: _heroes.isEmpty
+                      ? const Center(child: Text('No heroes found.'))
+                      : ListView.builder(
+                          itemCount: _heroes.length,
+                          itemBuilder: (context, index) {
+                            return HeroListTile(hero: _heroes[index]);
+                          },
+                        ),
+                ),
+        ],
       ),
     );
   }

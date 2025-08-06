@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../models/hero.dart';
 
 class HeroService {
-  final String _apiKey = '';
+  final String _apiKey = '887d73d41c53227dbbed1a4377e100d5';
 
   Future<List<Hero>> searchHero(String query) async {
     final response = await http.get(
